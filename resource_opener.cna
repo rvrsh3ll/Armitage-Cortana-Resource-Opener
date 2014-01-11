@@ -1,0 +1,30 @@
+# Script to open a resource file in another tab
+# The idea for this script was born from the need to load Veil-Evasion handlers into armitage sessions
+# Author:Steve "Bobo" Borosh
+# Twitter: @424f424f
+# Email: steveborosh@cybersecuritystrategies.co
+
+menubar("Resource Opener", "resourcefile", 2)
+
+on ready {
+$con = console();
+$con = open_console_tab ("Resource Opener");
+append($con, "          Resource Opener Ready");
+append($con, " Open your resource file using the menu bar");
+
+popup resourcefile {
+                item "Open Resource File" {
+                resourcefile();
+                       }
+                 }
+
+sub resourcefile {
+        $file = prompt_file_open(); # Prompt user for file
+        $handlef = openf($file); # set variable to the name of the file
+         $tabname = prompt_text("What would you like to name the new tab?");
+        $con2 = open_console_tab("$tabname");
+        cmd($con2, "resource $file");
+        db_sync();              
+               
+        }
+}
