@@ -4,7 +4,7 @@
 # Twitter: @424f424f
 # Email: steveborosh@cybersecuritystrategies.co
 
-menubar("Resource Opener", "resourcefile", 2)
+menubar("Resource Opener", "resourcefile", 2);
 
 on ready {
 $con = console();
